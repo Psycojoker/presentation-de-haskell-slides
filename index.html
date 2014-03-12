@@ -1915,17 +1915,18 @@ len [1,2,3] = 1 + 1 + 1 + 0
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Quicksort</h1></header>
             
             
             <section><p>Pour la blague:</p>
-<pre><code>quicksort [] = []
-quicksort (x:xs) = (quicksort [a | a &lt;- xs, a &lt;= x]) ++ [x] ++\
-                   (quicksort [a | a &lt;- xs, a &gt; x])
-</code></pre></section>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">quicksort</span> <span class="kt">[]</span> <span class="ow">=</span> <span class="kt">[]</span>
+<span class="lineno">2</span> <span class="nf">quicksort</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="n">xs</span><span class="p">)</span> <span class="ow">=</span> <span class="p">(</span><span class="n">quicksort</span> <span class="p">[</span><span class="n">a</span> <span class="o">|</span> <span class="n">a</span> <span class="ow">&lt;-</span> <span class="n">xs</span><span class="p">,</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">])</span> <span class="o">++</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">++\</span>
+<span class="lineno">3</span>                    <span class="p">(</span><span class="n">quicksort</span> <span class="p">[</span><span class="n">a</span> <span class="o">|</span> <span class="n">a</span> <span class="ow">&lt;-</span> <span class="n">xs</span><span class="p">,</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">])</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2375,10 +2376,11 @@ quicksort (x:xs) = (quicksort [a | a &lt;- xs, a &lt;= x]) ++ [x] ++\
 </pre></div>
 
 <p>takeWhile:</p>
-<pre><code>takeWhile (&lt;100) [1..]
--- ! liste infinie
-takeWhile :: (a -&gt; Bool) -&gt; [a] -&gt; [a]
-</code></pre></section>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">takeWhile</span> <span class="p">(</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="c1">-- ! liste infinie</span>
+<span class="lineno">3</span> <span class="nf">takeWhile</span> <span class="ow">::</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2960,13 +2962,14 @@ do not exceed four million, find the sum of the even-valued terms.</p>
 <h1>Clef de lecture 2<br>« la composition de fonctions sauvera le monde »</h1>
 <p>Vraiment puissant pour gérer l'explosion de la complexité et réutiliser du code.</p>
 <p>Exemple:</p>
-<pre><code>indent = unlines . map ("    " ++) . lines
-
--- projet perso
-printDescriptions = putStr . unlines . TodoDB.todosToString
-
-addTodo description = getTodos &gt;&gt;= (Yaml.emitYamlFile dbPath . todosToYaml . addTodoToCollection description)
-</code></pre></section>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">indent</span> <span class="ow">=</span> <span class="n">unlines</span> <span class="o">.</span> <span class="n">map</span> <span class="p">(</span><span class="s">&quot;    &quot;</span> <span class="o">++</span><span class="p">)</span> <span class="o">.</span> <span class="n">lines</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">-- projet perso</span>
+<span class="lineno">4</span> <span class="nf">printDescriptions</span> <span class="ow">=</span> <span class="n">putStr</span> <span class="o">.</span> <span class="n">unlines</span> <span class="o">.</span> <span class="kt">TodoDB</span><span class="o">.</span><span class="n">todosToString</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nf">addTodo</span> <span class="n">description</span> <span class="ow">=</span> <span class="n">getTodos</span> <span class="o">&gt;&gt;=</span> <span class="p">(</span><span class="kt">Yaml</span><span class="o">.</span><span class="n">emitYamlFile</span> <span class="n">dbPath</span> <span class="o">.</span> <span class="n">todosToYaml</span> <span class="o">.</span> <span class="n">addTodoToCollection</span> <span class="n">description</span><span class="p">)</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2990,33 +2993,34 @@ addTodo description = getTodos &gt;&gt;= (Yaml.emitYamlFile dbPath . todosToYaml
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Data</h1></header>
             
             
             <section><p>Permet de construire des structures complexes et des nouveaux types:</p>
-<pre><code>data Bool = True | False
-
-data Shape = Circle Float Float Float | Rectangle Float Float Float Float deriving (show)
-
-ghci&gt; :t Circle
-Circle :: Float -&gt; Float -&gt; Float -&gt; Shape
-ghci&gt; :t Rectangle
-Rectangle :: Float -&gt; Float -&gt; Float -&gt; Float -&gt; Shape
-
-surface :: Shape -&gt; Float
-surface (Circle _ _ r) = pi * r ^ 2
-surface (Rectangle x1 y1 x2 y2) = (abs $ x2 - x1) * (abs $ y2 - y1)
-
-ghci&gt; surface $ Circle 10 20 10
-314.15927
-ghci&gt; surface $ Rectangle 0 0 100 100
-10000.0
-
-data Inteu a = Zero | Succ (a)
-</code></pre></section>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="kr">data</span> <span class="kt">Bool</span> <span class="ow">=</span> <span class="kt">True</span> <span class="o">|</span> <span class="kt">False</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="kr">data</span> <span class="kt">Shape</span> <span class="ow">=</span> <span class="kt">Circle</span> <span class="kt">Float</span> <span class="kt">Float</span> <span class="kt">Float</span> <span class="o">|</span> <span class="kt">Rectangle</span> <span class="kt">Float</span> <span class="kt">Float</span> <span class="kt">Float</span> <span class="kt">Float</span> <span class="kr">deriving</span> <span class="p">(</span><span class="n">show</span><span class="p">)</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nf">ghci</span><span class="o">&gt;</span> <span class="kt">:</span><span class="n">t</span> <span class="kt">Circle</span>
+<span class="lineno"> 6</span> <span class="kt">Circle</span> <span class="ow">::</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Shape</span>
+<span class="lineno"> 7</span> <span class="nf">ghci</span><span class="o">&gt;</span> <span class="kt">:</span><span class="n">t</span> <span class="kt">Rectangle</span>
+<span class="lineno"> 8</span> <span class="kt">Rectangle</span> <span class="ow">::</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Float</span> <span class="ow">-&gt;</span> <span class="kt">Shape</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="nf">surface</span> <span class="ow">::</span> <span class="kt">Shape</span> <span class="ow">-&gt;</span> <span class="kt">Float</span>
+<span class="lineno">11</span> <span class="nf">surface</span> <span class="p">(</span><span class="kt">Circle</span> <span class="kr">_</span> <span class="kr">_</span> <span class="n">r</span><span class="p">)</span> <span class="ow">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">^</span> <span class="mi">2</span>
+<span class="lineno">12</span> <span class="nf">surface</span> <span class="p">(</span><span class="kt">Rectangle</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span><span class="p">)</span> <span class="ow">=</span> <span class="p">(</span><span class="n">abs</span> <span class="o">$</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">abs</span> <span class="o">$</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="nf">ghci</span><span class="o">&gt;</span> <span class="n">surface</span> <span class="o">$</span> <span class="kt">Circle</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">10</span>
+<span class="lineno">15</span> <span class="mf">314.15927</span>
+<span class="lineno">16</span> <span class="nf">ghci</span><span class="o">&gt;</span> <span class="n">surface</span> <span class="o">$</span> <span class="kt">Rectangle</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">100</span> <span class="mi">100</span>
+<span class="lineno">17</span> <span class="mf">10000.0</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="kr">data</span> <span class="kt">Inteu</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Zero</span> <span class="o">|</span> <span class="kt">Succ</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -3040,22 +3044,23 @@ data Inteu a = Zero | Succ (a)
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Records</h1></header>
             
             
-            <section><pre><code>data Person = Person { firstName :: String
-                     , lastName :: String
-                     , age :: Int
-                     , height :: Float
-                     , phoneNumber :: String
-                     , flavor :: String
-                     } deriving (Show)
-
-firstName $ Person{firstName="pouet", ...}
-</code></pre></section>
+            <section><div class="highlight"><pre><span class="lineno">1</span> <span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="p">{</span> <span class="n">firstName</span> <span class="ow">::</span> <span class="kt">String</span>
+<span class="lineno">2</span>                      <span class="p">,</span> <span class="n">lastName</span> <span class="ow">::</span> <span class="kt">String</span>
+<span class="lineno">3</span>                      <span class="p">,</span> <span class="n">age</span> <span class="ow">::</span> <span class="kt">Int</span>
+<span class="lineno">4</span>                      <span class="p">,</span> <span class="n">height</span> <span class="ow">::</span> <span class="kt">Float</span>
+<span class="lineno">5</span>                      <span class="p">,</span> <span class="n">phoneNumber</span> <span class="ow">::</span> <span class="kt">String</span>
+<span class="lineno">6</span>                      <span class="p">,</span> <span class="n">flavor</span> <span class="ow">::</span> <span class="kt">String</span>
+<span class="lineno">7</span>                      <span class="p">}</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
+<span class="lineno">8</span> 
+<span class="lineno">9</span> <span class="nf">firstName</span> <span class="o">$</span> <span class="kt">Person</span><span class="p">{</span><span class="n">firstName</span><span class="ow">=</span><span class="s">&quot;pouet&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -3079,7 +3084,7 @@ firstName $ Person{firstName="pouet", ...}
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Maybe</h1></header>
@@ -3087,20 +3092,22 @@ firstName $ Person{firstName="pouet", ...}
             
             <section><p>Certaines fonctions sont unsafe.</p>
 <p>Exemple:</p>
-<pre><code>head [] -- Boom!
-</code></pre>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">head</span> <span class="kt">[]</span> <span class="c1">-- Boom!</span>
+</pre></div>
+
 <p>Problem: pas de None car le None SÉMALE !</p>
 <p>Solution: le maybe.</p>
-<pre><code>data Maybe a = Just a | Nothing
-
-safeHead :: [a] -&gt; Maybe a
-safeHead [] = Nothing
-safeHead (x:_) = Just x
-
-haveAnHead :: Maybe a -&gt; String
-haveAnHead Just _ = "Yeah, have an head!"
-haveAnHead Nothing = "No head, no chocolate"
-</code></pre></section>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="kr">data</span> <span class="kt">Maybe</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Just</span> <span class="n">a</span> <span class="o">|</span> <span class="kt">Nothing</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="nf">safeHead</span> <span class="ow">::</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="n">a</span>
+<span class="lineno">4</span> <span class="nf">safeHead</span> <span class="kt">[]</span> <span class="ow">=</span> <span class="kt">Nothing</span>
+<span class="lineno">5</span> <span class="nf">safeHead</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="kr">_</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">Just</span> <span class="n">x</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span> <span class="nf">haveAnHead</span> <span class="ow">::</span> <span class="kt">Maybe</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="lineno">8</span> <span class="nf">haveAnHead</span> <span class="kt">Just</span> <span class="kr">_</span> <span class="ow">=</span> <span class="s">&quot;Yeah, have an head!&quot;</span>
+<span class="lineno">9</span> <span class="nf">haveAnHead</span> <span class="kt">Nothing</span> <span class="ow">=</span> <span class="s">&quot;No head, no chocolate&quot;</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">

@@ -186,6 +186,7 @@ Exemple, "len [1,2,3]" donnera:
 
 Pour la blague:
 
+    !haskell
     quicksort [] = []
     quicksort (x:xs) = (quicksort [a | a <- xs, a <= x]) ++ [x] ++\
                        (quicksort [a | a <- xs, a > x])
@@ -388,6 +389,7 @@ Foldl (fold left, le reduce):
 
 takeWhile:
 
+    !haskell
     takeWhile (<100) [1..]
     -- ! liste infinie
     takeWhile :: (a -> Bool) -> [a] -> [a]
@@ -662,6 +664,7 @@ Vraiment puissant pour gérer l'explosion de la complexité et réutiliser du co
 
 Exemple:
 
+    !haskell
     indent = unlines . map ("    " ++) . lines
 
     -- projet perso
@@ -675,6 +678,7 @@ Exemple:
 
 Permet de construire des structures complexes et des nouveaux types:
 
+    !haskell
     data Bool = True | False
 
     data Shape = Circle Float Float Float | Rectangle Float Float Float Float deriving (show)
@@ -699,6 +703,7 @@ Permet de construire des structures complexes et des nouveaux types:
 
 # Records
 
+    !haskell
     data Person = Person { firstName :: String
                          , lastName :: String
                          , age :: Int
@@ -717,12 +722,14 @@ Certaines fonctions sont unsafe.
 
 Exemple:
 
+    !haskell
     head [] -- Boom!
 
 Problem: pas de None car le None SÉMALE !
 
 Solution: le maybe.
 
+    !haskell
     data Maybe a = Just a | Nothing
 
     safeHead :: [a] -> Maybe a
